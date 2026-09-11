@@ -140,7 +140,16 @@ function App() {
                 )}
 
                 <div className="generate-row">
-                  <button className="secondary-btn"><Upload size={17}/> Reference</button>
+                  <label htmlFor="reference-upload" className="secondary-btn">
+  <Upload size={17}/> Reference
+</label>
+<input
+  id="reference-upload"
+  type="file"
+  accept="image/*"
+  onChange={e => setReference(e.target.files[0])}
+  style={{display:"none"}}
+/>
                   <button className="generate-btn" onClick={generate} disabled={busy}>
                     {busy ? <><Clock3 size={18}/> Queueing...</> : <><Wand2 size={18}/> Generate {mode}</>}
                   </button>
