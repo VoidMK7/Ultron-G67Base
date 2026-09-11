@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import multer from "multer";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = __dirname;
 const PORT = process.env.PORT || 10000;
 const app = express();
 const upload = multer({ dest: path.join(ROOT, "uploads") });
