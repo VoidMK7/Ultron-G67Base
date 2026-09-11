@@ -50,7 +50,10 @@ app.post("/api/upload", upload.single("file"), (req,res) => {
 const dist = path.join(ROOT, "dist");
 if (fs.existsSync(dist)) {
   app.use(express.static(dist));
-  app.get("*splat", (_req,res) => res.sendFile(path.join(dist,"index.html")));
+  // Catch-all route for React Router
+  app.get("*", (_req,res) => {
+    res.sendFile(path.join(dist,"index.html"));
+  });
 } else {
   app.get("/", (_req,res) => res.json({ ok:true, message:"AI Studio API is running. Use npm run dev for the frontend." }));
 }
